@@ -1,20 +1,14 @@
 const config = require('../config');
-const DEVELOPMENT = require('../environment').isDevelopment;
 const gulp = require('gulp');
-const gulpif = require('gulp-if');
-const browserSync = require('browser-sync');
-const merge = require('merge-stream');
 
-gulp.task('copySgAssets', () => {
-    const css = gulp.src(`${config.CSS_BUILD}/*`)
-        .pipe(gulp.dest(`${config.STYLEGUIDE_DEST}/css`))
-        .pipe(gulpif(DEVELOPMENT, browserSync.stream()));
+gulp.task('copyStyleguide', ['styleguide'], () => {
+    gulp.src(`${config.STYLEGUIDE_BASE}/*`)
+        .pipe(gulp.dest(config.STYLEGUIDE_DEST));
+});
 
-    const js = gulp.src(`${config.JS_BUILD}/*`)
-        .pipe(gulp.dest(`${config.STYLEGUIDE_DEST}/js`));
+gulp.task('copyJsTemplates', () => {
+    const jsTemplates = gulp.src(`${config.JS_TEMPLATES}/*`)
+        .pipe(gulp.dest(`${config.JS_TEMPLATES_BUILD}`));
 
-    const gfx = gulp.src(`${config.GFX_BUILD}/**/*`)
-        .pipe(gulp.dest(`${config.STYLEGUIDE_DEST}/gfx`));
-
-    return merge(css, js, gfx);
+    return jsTemplates;
 });

@@ -9,12 +9,15 @@ import init from './init';
 import { render, renderFactory } from './render';
 import configureStore from './store/configureStore';
 import cookieLaw from './components/cookie-law';
+import validations from './components/validations';
 import suffix from './components/suffix';
 import Timer from './components/Timer';
 import PlusOne from './components/plus-one/PlusOne';
 
 const app = (config) => {
     init(cookieLaw, document.getElementById('cookie-law'));
+    init(validations, document.getElementById('validations'));
+    init(suffix, document.querySelector('.js-suffix'));
     init(suffix, document.querySelector('.js-suffix'));
 
     const store = configureStore(config);

@@ -10,12 +10,17 @@ const sassGlob = require('gulp-sass-glob');
 const cssnano = require('cssnano');
 const flexbugsFixes = require('postcss-flexbugs-fixes');
 const postcss = require('gulp-postcss');
+const postcssInlineSvg = require('postcss-inline-svg');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const merge = require('merge-stream');
 
 gulp.task('styles', ['stylelint'], () => {
     const postcssPlugins = [
         flexbugsFixes, // first must be flexbugs, because flexbugs do not process vendor-prefixed variants
+        postcssInlineSvg({
+            path: config.TEMPLATE_SVG
+        }),
         autoprefixer()
     ];
 
@@ -23,16 +28,20 @@ gulp.task('styles', ['stylelint'], () => {
         cssnano({ safe: true })
     ];
 
-    return gulp.src(config.CSS_ENTRY)
-        .pipe(sassGlob())
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-            .on('error', sass.logError)
-        .pipe(postcss(postcssPlugins))
-        .pipe(gulpif(DEVELOPMENT, sourcemaps.write()))
-        .pipe(gulp.dest(config.CSS_BUILD))
-        .pipe(gulpif(DEVELOPMENT, browserSync.stream()))
-        .pipe(gulpif(PRODUCTION, postcss(postcssDistPlugins)))
-        .pipe(gulpif(PRODUCTION, rename({ suffix: '.min' })))
-        .pipe(gulpif(PRODUCTION, gulp.dest(config.CSS_BUILD)));
+    const tasks = config.CSS_ENTRIES.map(entry => {
+        return gulp.src(entry.file)
+            .pipe(sassGlob())
+            .pipe(sourcemaps.init())
+            .pipe(sass())
+                .on('error', sass.logError)
+            .pipe(postcss(postcssPlugins))
+            .pipe(gulpif(DEVELOPMENT, sourcemaps.write()))
+            .pipe(gulp.dest(config.CSS_BUILD))
+            .pipe(gulpif(DEVELOPMENT, browserSync.stream()))
+            .pipe(gulpif(PRODUCTION, postcss(postcssDistPlugins)))
+            .pipe(gulpif(PRODUCTION, rename({ suffix: '.min' })))
+            .pipe(gulpif(PRODUCTION, gulp.dest(config.CSS_BUILD)));
+    });
+
+    return merge(tasks);
 });

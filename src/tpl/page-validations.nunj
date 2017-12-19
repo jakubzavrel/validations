@@ -1,0 +1,37 @@
+{% extends './layouts/default.nunj' %} 
+{% block content %}
+<div id="validations">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <label for="name">Name:</label>
+            <br>
+            <input type="text" id="name" class="js-validation" data-pattern="[a-zA-Z-]+" title="only a-z A-Z and '-' symbol" required>
+        </div>
+        <div class="col-12 col-md-3">
+            <label for="surname">Surname:</label>
+            <br>
+            <input type="text" id="surname" class="js-validation" data-pattern="[a-zA-Z-]+" title="only a-z A-Z and '-' symbol">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <label for="name">Email:</label>
+            <br>
+            <input type="email" id="email" class="js-validation">
+        </div>
+        <div class="col-12 col-md-3">
+            <label for="usphone">US Phone:</label>
+            <br>
+            <input type="text" id="usphone" class="js-validation" name="usphone" data-pattern="^\d{4}-\d{2}-\d{4}$" title="8888-888-8888">
+        </div>
+        <div class="col-12 col-md-3">
+            <label for="phone">CZ Phone:</label>
+            <br>
+            <input type="phone" id="phone" class="js-validation" name="phone" data-pattern="^(\+420)\d{9}$" title="+420123456789">
+        </div>
+    </div>
+    <div class="pt-5">
+      <a href="#" class="btn btn-primary js-validation-master">send</a>
+    </div>
+</div>
+{% endblock %}

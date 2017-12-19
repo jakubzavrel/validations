@@ -17,6 +17,14 @@ const
     /* CSS */
     CSS_BASE = `${DEVELOPMENT_BASE}/styles`,
     CSS_ENTRY = `${CSS_BASE}/main.scss`,
+    CSS_ENTRIES = [
+        {
+            file: `${CSS_BASE}/main.scss`
+        },
+        {
+            file: `${CSS_BASE}/print.scss`
+        }
+    ],
     CSS_ALL = `${CSS_BASE}/**/*.scss`,
     CSS_BUILD = `${BUILD_BASE}/css`,
     CSS_TPL_PATH = '/css',
@@ -29,6 +37,10 @@ const
     JS_VENDOR_ALL = `${JS_BASE}/vendor/**/*.js`,
     JS_BUILD = `${BUILD_BASE}/js`,
     JS_TPL_PATH = '/js',
+
+    /* Nunjucks JS templates */
+    JS_TEMPLATES = `${JS_BASE}/components/templates`,
+    JS_TEMPLATES_BUILD = `${JS_BUILD}/templates`,
 
     /* GFX */
     GFX_BASE = `${DEVELOPMENT_BASE}/gfx`,
@@ -66,6 +78,7 @@ const
     TEMPLATE_BASE = `${DEVELOPMENT_BASE}/tpl`,
     TEMPLATE_PAGES = `${TEMPLATE_BASE}/*.nunj`,
     TEMPLATE_ALL = `${TEMPLATE_BASE}/**/*.nunj`,
+    TEMPLATE_SVG = `${TEMPLATE_BASE}/svg`,
 
     /* HTML */
     HTML_ALL = `${DEVELOPMENT_BASE}/*.html`,
@@ -73,9 +86,8 @@ const
 
     /* Styleguide */
     STYLEGUIDE_BASE = './styleguide',
-    STYLEGUIDE_HOMEPAGE = `../../styleguide.md`,
-    STYLEGUIDE_DEST = `${STYLEGUIDE_BASE}/styleguide`,
-    STYLEGUIDE_TEMPLATE = `${NPM}/styleguide/dist`,
+    STYLEGUIDE_DB = './styleguide/db/*.txt',
+    STYLEGUIDE_DEST = `${BUILD_BASE}/styleguide`,
 
     // deploy
     DEPLOY_HOST = '',
@@ -98,7 +110,7 @@ module.exports = {
     GULP_ALL,
 
     CSS_BASE,
-    CSS_ENTRY,
+    CSS_ENTRIES,
     CSS_ALL,
     CSS_BUILD,
     CSS_TPL_PATH,
@@ -110,6 +122,9 @@ module.exports = {
     JS_VENDOR_ALL,
     JS_BUILD,
     JS_TPL_PATH,
+
+    JS_TEMPLATES,
+    JS_TEMPLATES_BUILD,
 
     GFX_BASE,
     GFX_BUILD,
@@ -130,13 +145,13 @@ module.exports = {
     TEMPLATE_BASE,
     TEMPLATE_PAGES,
     TEMPLATE_ALL,
+    TEMPLATE_SVG,
     HTML_ALL,
     HTML_BUILD,
 
     STYLEGUIDE_BASE,
-    STYLEGUIDE_HOMEPAGE,
+    STYLEGUIDE_DB,
     STYLEGUIDE_DEST,
-    STYLEGUIDE_TEMPLATE,
 
     DEPLOY_HOST,
     DEPLOY_USERNAME,

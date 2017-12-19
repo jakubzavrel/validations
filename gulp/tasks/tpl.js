@@ -26,7 +26,7 @@ gulp.task('tpl-compile', () => {
         _dev: DEVELOPMENT,
         _pages: getPagesList()
     };
-    const searchPaths = [config.TEMPLATE_BASE, config.SVG_BUILD];
+    const searchPaths = [config.TEMPLATE_BASE, config.SVG_BASE];
     const options = {
         noCache: true
     };

@@ -11,8 +11,7 @@ const port = config.PORT;
 gulp.task('serve', ['prepare'], () => {
     const baseDir = DEVELOPMENT ? [
         config.BUILD_BASE,
-        config.NPM,
-        config.STYLEGUIDE_BASE
+        config.NPM
 
     ] : config.BUILD_BASE;
 
@@ -31,11 +30,13 @@ gulp.task('serve', ['prepare'], () => {
     const watch = (glob, tasks) => gwatch(glob, () => runSequence(...tasks));
 
     if (DEVELOPMENT) {
-        watch(config.CSS_ALL, ['styles', 'styleguide', 'copySgAssets']);
+        watch(config.CSS_ALL, ['styles', 'styleguideCopy']);
         watch(config.JS_ALL, ['eslint:app']);
+        watch(config.JS_TEMPLATES, ['copyJsTemplates']);
         watch(config.IMAGES_ALL, ['images', 'tpl']);
         watch(config.SVG_SPRITE_ALL, ['svg', 'tpl']);
         watch(config.TEMPLATE_ALL, ['tpl']);
+        watch(config.STYLEGUIDE_DB, ['styleguideCopy']);
         watch(config.API, ['api-reload']);
     }
 });
