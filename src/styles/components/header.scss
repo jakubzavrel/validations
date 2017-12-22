@@ -1,0 +1,63 @@
+.header {
+    background-color: #f6f6f6;
+
+    &__logo {
+        &-icon {
+            width: 100px;
+            height: 85px;
+
+            &:hover {
+                fill: #20c997;
+            }
+        }
+    }
+
+    &__menu-toggle {
+        position: relative;
+        width: 30px;
+        height: 22px;
+
+        &-center,
+        &:before,
+        &:after {
+            position: absolute;
+            left: 0;
+            display: inline-block;
+            height: 4px;
+            width: 30px;
+            background-color: #000;
+        }
+
+        &:before,
+        &:after {
+            content: '';
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        &-center {
+            top: calc(50% - 2px);
+
+            .active & {
+                opacity: 0;
+            }
+        }
+
+        &:after {
+            top: calc(100% - 4px);
+        }
+
+        &.active {
+            &:after {
+                transform: rotate(45deg);
+            }
+
+            &:before {
+                top: calc(100% - 4px);
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}

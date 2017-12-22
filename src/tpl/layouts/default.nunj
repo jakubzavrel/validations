@@ -33,6 +33,7 @@
     {% endif %}
 </head>
 <body>
+    {% include '../components/header.nunj' %}
     {# Main content of the page #}
     <main>
         <div class="container">

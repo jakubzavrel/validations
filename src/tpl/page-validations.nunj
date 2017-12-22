@@ -1,33 +1,52 @@
 {% extends './layouts/default.nunj' %} 
 {% block content %}
+<!-- 
+    data-validation-required="toto pole je povinné"
+    data-validation-no-special-symbols="nesmi obsahovat specialni symbol"
+ -->
 <div id="validations">
     <div class="row">
         <div class="col-12 col-md-3">
-            <label for="name">Name:</label>
-            <br>
-            <input type="text" id="name" class="js-validation" data-pattern="[a-zA-Z-]+" title="only a-z A-Z and '-' symbol" required>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <br>
+                <input type="text" id="name" class="js-validation" data-validation-required="toto pole je povinné">
+                <span class="error u-hidden"></span>
+            </div>
         </div>
         <div class="col-12 col-md-3">
-            <label for="surname">Surname:</label>
-            <br>
-            <input type="text" id="surname" class="js-validation" data-pattern="[a-zA-Z-]+" title="only a-z A-Z and '-' symbol">
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <br>
+                <input type="text" id="surname" class="js-validation" data-validation-no-special-symbols="nesmi obsahovat specialni symbol">
+                <span class="error u-hidden"></span>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-3">
-            <label for="name">Email:</label>
-            <br>
-            <input type="email" id="email" class="js-validation">
+            <div class="form-group">
+                <label for="name">Email:</label>
+                <br>
+                <input type="email" id="email" class="js-validation" data-validation-required="toto pole je povinné" data-validation-email="toto není email formát">
+                <span class="error u-hidden"></span>
+            </div>
         </div>
         <div class="col-12 col-md-3">
-            <label for="usphone">US Phone:</label>
-            <br>
-            <input type="text" id="usphone" class="js-validation" name="usphone" data-pattern="^\d{4}-\d{2}-\d{4}$" title="8888-888-8888">
+            <div class="form-group">
+                <label for="usphone">US Phone:</label>
+                <br>
+                <input type="text" id="usphone" class="js-validation" name="usphone" data-validation-number="true" data-pattern-="^\d{4}-\d{2}-\d{4}$" title="8888-888-8888">
+                <span class="error u-hidden"></span>
+            </div>
         </div>
         <div class="col-12 col-md-3">
-            <label for="phone">CZ Phone:</label>
-            <br>
-            <input type="phone" id="phone" class="js-validation" name="phone" data-pattern="^(\+420)\d{9}$" title="+420123456789">
+            <div class="form-group">
+                <label for="phone">CZ Phone:</label>
+                <br>
+                <input type="phone" id="phone" class="js-validation" name="phone" data-pattern="^(\+420)\d{9}$" title="+420123456789">
+                <span class="error u-hidden"></span>
+            </div>
         </div>
     </div>
     <div class="pt-5">
