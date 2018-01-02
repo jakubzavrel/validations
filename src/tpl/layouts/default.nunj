@@ -40,7 +40,8 @@
             {% block content %}{% endblock %}
         </div>
     </main>
-
+    {% include '../components/footer.nunj' %}
+    
     {# Scripts #}
     <script>
         var config = {};

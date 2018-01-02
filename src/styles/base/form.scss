@@ -146,13 +146,13 @@ input {
     color: white;
     background-color: #c03;
 
-    &:before {
+    &::before {
         position: absolute;
         left: 10px;
         top: -7px;
         border-style: solid;
-        border-width: 0 8px 7px 8px;
-        border-color: transparent transparent #c03 transparent;
+        border-width: 0 8px 7px;
+        border-color: transparent transparent #c03;
         content: '';
     }
 }

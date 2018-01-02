@@ -100,7 +100,6 @@
     "stylelint-config-standard": "^17.0.0",
     "svgxuse": "^1.2.4",
     "uglifyify": "^4.0.3",
-    "validator": "^9.2.0",
     "vanilla-lazyload": "8.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

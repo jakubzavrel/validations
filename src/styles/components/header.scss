@@ -1,5 +1,5 @@
 .header {
-    background-color: #f6f6f6;
+    background-color: $grey;
 
     &__logo {
         &-icon {
@@ -12,51 +12,98 @@
         }
     }
 
-    &__menu-toggle {
-        position: relative;
-        width: 30px;
-        height: 22px;
+    &__menu {
+        overflow-x: hidden;
 
-        &-center,
-        &:before,
-        &:after {
+        &-list {
             position: absolute;
-            left: 0;
-            display: inline-block;
-            height: 4px;
-            width: 30px;
-            background-color: #000;
-        }
+            top: 80px;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 0;
+            padding: 0 20px;
+            opacity: 0;
+            visibility: hidden;
+            background: $grey;
+            z-index: 1;
+            transition: opacity .3s ease;
 
-        &:before,
-        &:after {
-            content: '';
-        }
-
-        &:before {
-            top: 0;
-        }
-
-        &-center {
-            top: calc(50% - 2px);
+            @media (min-width: map-get($grid-breakpoints, 'md')) {
+                position: static;
+                padding: 0;
+                opacity: 1;
+                visibility: visible;
+            }
 
             .active & {
-                opacity: 0;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &-item {
+                display: block;
+
+                @media (min-width: map-get($grid-breakpoints, 'md')) {
+                    display: inline-block;
+                }
             }
         }
 
-        &:after {
-            top: calc(100% - 4px);
-        }
+        &-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+            width: 30px;
+            height: 22px;
 
-        &.active {
-            &:after {
-                transform: rotate(45deg);
+            @media (min-width: map-get($grid-breakpoints, 'md')) {
+                display: none;
             }
 
-            &:before {
+            &-center,
+            &::before,
+            &::after {
+                position: absolute;
+                left: 0;
+                display: inline-block;
+                height: 4px;
+                width: 30px;
+                background-color: #000;
+                transition: all .3s ease;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+            }
+
+            &::before {
+                top: 0;
+            }
+
+            &-center {
+                top: calc(50% - 2px);
+
+                .active & {
+                    opacity: 0;
+                }
+            }
+
+            &::after {
                 top: calc(100% - 4px);
-                transform: rotate(-45deg);
+            }
+
+            .active & {
+                &::after {
+                    top: 10px;
+                    transform: rotate(45deg);
+                }
+
+                &::before {
+                    top: 10px;
+                    transform: rotate(-45deg);
+                }
             }
         }
     }
