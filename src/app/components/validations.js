@@ -25,8 +25,13 @@ const validations = (container) => {
             {
                 emailFormat: field.dataset.validationEmail,
                 message: field.dataset.validationEmail
+            },
+            {
+                min: field.dataset.validationMin,
+                message: field.dataset.validationMinMessage
             }
             ];
+            // console.log(field.dataset.validationMin);
             let message = validate(field.value, fieldValidation);
             if (message) {
                 message = message.replace('null', '');

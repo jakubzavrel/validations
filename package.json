@@ -84,6 +84,7 @@
     "nunjucks": "^3.0.1",
     "nunjucks-loader": "2.4.8",
     "picturefill": "3.0.2",
+    "pikaday": "^1.7.0",
     "postcss-flexbugs-fixes": "^3.2.0",
     "postcss-inline-svg": "3.0.0",
     "pre-push": "^0.1.1",

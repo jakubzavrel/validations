@@ -4,9 +4,9 @@
     data-validation-required="toto pole je povinné"
     data-validation-no-special-symbols="nesmi obsahovat specialni symbol"
  -->
-<div id="validations">
+<div id="validations" class="py-5">
     <div class="row">
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <br>
@@ -14,7 +14,7 @@
                 <span class="error u-hidden"></span>
             </div>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="surname">Surname:</label>
                 <br>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="name">Email:</label>
                 <br>
@@ -32,7 +32,15 @@
                 <span class="error u-hidden"></span>
             </div>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-group">
+                <label for="datepicker">Birthdate:</label>
+                <br>
+                <input type="text" id="datepicker" class="js-validation">
+                <span class="error u-hidden"></span>
+            </div>
+        </div>
+        <!-- <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="usphone">US Phone:</label>
                 <br>
@@ -40,11 +48,30 @@
                 <span class="error u-hidden"></span>
             </div>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="phone">CZ Phone:</label>
                 <br>
                 <input type="phone" id="phone" class="js-validation" name="phone" data-pattern="^(\+420)\d{9}$" title="+420123456789">
+                <span class="error u-hidden"></span>
+            </div>
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <br>
+                <input type="radio" name="gender" value="male" checked="true">Male<br>
+                <input type="radio" name="gender" value="female">Female
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-group">
+                <label for="datepicker">Kids:</label><br>
+                <input type="number" id="datepicker" class="js-validation" data-validation-min="0" data-validation-min-message="Pouze nula nebo kladné číslo" value="0">
                 <span class="error u-hidden"></span>
             </div>
         </div>

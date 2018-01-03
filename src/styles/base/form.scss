@@ -129,7 +129,7 @@
  *
  * Styleguide Base - Form - Validation error
  */
-input {
+input:not([type=radio]) {
     width: 100%;
 }
 
