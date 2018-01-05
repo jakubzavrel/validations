@@ -8,38 +8,79 @@ const validations = (container) => {
     const formResult = container.getElementsByClassName('js-form-result');
 
     events.on(button[0], { click: event => validateForm(event) });
+    events.on(inputs[0], { blur: event => validateSingleInput(event) });
 
+    /**
+     * create set of validation rules
+     * @param  {Element} field  element to validate
+     * @return {Object}         object of validation rules
+     */
+    function validaitonRules(field) {
+        const fieldValidation = [{
+            required: field.dataset.validationRequired,
+            message: field.dataset.validationRequired
+        },
+        {
+            noSpecialSymbols: field.dataset.validationNoSpecialSymbols,
+            message: field.dataset.validationNoSpecialSymbols
+        },
+        {
+            emailFormat: field.dataset.validationEmail,
+            message: field.dataset.validationEmail
+        },
+        {
+            min: field.dataset.validationMin,
+            message: field.dataset.validationMinMessage
+        }
+        ];
+
+        return fieldValidation;
+    }
+
+    /**
+     * function for validation of single input, same for single input validation and whole form
+     * @param  {Element} field  element to validate
+     * @return {Boolean}        return true if there is error
+     */
+    function validateInput(field) {
+        const error = field.closest('.form-group').getElementsByClassName('error');
+        error[0].classList.add('u-hidden');
+        const fieldValidation = validaitonRules(field);
+
+        let message = validate(field.value, fieldValidation);
+        if (message) {
+            message = message.replace('null', '');
+            error[0].classList.remove('u-hidden');
+            error[0].innerHTML = message;
+        }
+
+        return message;
+    }
+
+    /**
+     * validate single input after blur
+     * @param  {event} event    blur event on input
+     * @return {Boolean}        always true
+     */
+    function validateSingleInput(event) {
+        const currentInput = event.currentTarget;
+        validateInput(currentInput);
+        return true;
+    }
+
+    /**
+     * validate whole form and show message if form was send
+     * @param  {event} event    click event on send button 
+     */
     function validateForm(event) {
         event.preventDefault();
         let errorFree = true;
 
         inputs.forEach((field) => {
-            const error = field.closest('.form-group').getElementsByClassName('error');
-            error[0].classList.add('u-hidden');
-            const fieldValidation = [{
-                required: field.dataset.validationRequired,
-                message: field.dataset.validationRequired
-            },
-            {
-                noSpecialSymbols: field.dataset.validationNoSpecialSymbols,
-                message: field.dataset.validationNoSpecialSymbols
-            },
-            {
-                emailFormat: field.dataset.validationEmail,
-                message: field.dataset.validationEmail
-            },
-            {
-                min: field.dataset.validationMin,
-                message: field.dataset.validationMinMessage
-            }
-            ];
+            const isInvalid = validateInput(field);
 
-            let message = validate(field.value, fieldValidation);
-            if (message) {
+            if (isInvalid) {
                 errorFree = false;
-                message = message.replace('null', '');
-                error[0].classList.remove('u-hidden');
-                error[0].innerHTML = message;
             }
         });
 
