@@ -8,7 +8,9 @@ const validations = (container) => {
     const formResult = container.getElementsByClassName('js-form-result');
 
     events.on(button[0], { click: event => validateForm(event) });
-    events.on(inputs[0], { blur: event => validateSingleInput(event) });
+    inputs.forEach((input) => {
+        events.on(input, { blur: event => validateSingleInput(event) });
+    });
 
     /**
      * create set of validation rules
@@ -70,7 +72,7 @@ const validations = (container) => {
 
     /**
      * validate whole form and show message if form was send
-     * @param  {event} event    click event on send button 
+     * @param  {event} event click event on send button 
      */
     function validateForm(event) {
         event.preventDefault();
