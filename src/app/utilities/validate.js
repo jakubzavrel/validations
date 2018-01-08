@@ -22,6 +22,7 @@ const validate = (value, validationRules = []) => {
             const emailFormat = rule.emailFormat;
             const specialSymbols = rule.specialSymbols;
             const equal = rule.equal;
+            const regexValidation = rule.regexValidation;
             if (required) {
                 if (value === '' || (!value && value !== 0)) {
                     errorMessage += `${rule.message}<br/>`;
@@ -83,6 +84,13 @@ const validate = (value, validationRules = []) => {
 
             if (equal) {
                 if (value !== equal) {
+                    errorMessage += `${rule.message}<br/>`;
+                }
+            }
+
+            if (regexValidation) {
+                const re = new RegExp(regexValidation);
+                if (!value.match(re)) {
                     errorMessage += `${rule.message}<br/>`;
                 }
             }

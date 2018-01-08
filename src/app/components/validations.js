@@ -28,6 +28,10 @@ const validations = (container) => {
         {
             min: field.dataset.validationMin,
             message: field.dataset.validationMinMessage
+        },
+        {
+            regexValidation: field.dataset.validationRegular,
+            message: field.dataset.validationRegularMessage
         }
         ];
 
