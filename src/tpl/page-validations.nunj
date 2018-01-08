@@ -1,8 +1,11 @@
 {% extends './layouts/default.nunj' %} 
 {% block content %}
 <!-- 
-    data-validation-required="toto pole je povinné"
-    data-validation-no-special-symbols="nesmi obsahovat specialni symbol"
+    data-validation-required="required field"
+    data-validation-no-special-symbols="no special symbol"
+    data-validation-email="not an email format"
+    data-validation-min="0" data-validation-min-message="only 0 or possitive number"
+    data-validation-regular="x|y" data-validation-regular-message="not x or y"
  -->
 <div id="validations" class="py-5">
     <div class="row">
@@ -10,7 +13,7 @@
             <div class="form-group">
                 <label for="name">Name:</label>
                 <br>
-                <input type="text" name="name" id="name" class="js-validation" data-validation-required="toto pole je povinné">
+                <input type="text" name="name" id="name" class="js-validation" data-validation-required="required field">
                 <span class="error u-hidden"></span>
             </div>
         </div>
@@ -18,7 +21,7 @@
             <div class="form-group">
                 <label for="surname">Surname:</label>
                 <br>
-                <input type="text" name="surname" id="surname" class="js-validation" data-validation-no-special-symbols="nesmi obsahovat specialni symbol">
+                <input type="text" name="surname" id="surname" class="js-validation" data-validation-no-special-symbols="no special symbol">
                 <span class="error u-hidden"></span>
             </div>
         </div>
@@ -28,7 +31,7 @@
             <div class="form-group">
                 <label for="name">Email:</label>
                 <br>
-                <input type="email" name="email" id="email" class="js-validation" data-validation-required="toto pole je povinné" data-validation-email="toto není email formát">
+                <input type="email" name="email" id="email" class="js-validation" data-validation-required="required field" data-validation-email="not an email format">
                 <span class="error u-hidden"></span>
             </div>
         </div>
@@ -56,7 +59,7 @@
         <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="kids">Kids:</label><br>
-                <input type="number" name="kids" id="kids" class="js-validation" data-validation-min="0" data-validation-min-message="Pouze nula nebo kladné číslo" value="0">
+                <input type="number" name="kids" id="kids" class="js-validation" data-validation-min="0" data-validation-min-message="only 0 or possitive number" value="0">
                 <span class="error u-hidden"></span>
             </div>
         </div>
