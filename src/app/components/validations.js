@@ -7,17 +7,12 @@ const validations = (container) => {
     const button = container.getElementsByClassName('js-validation-master');
     const formResult = container.getElementsByClassName('js-form-result');
 
-    events.on(button[0], { click: event => validateForm(event) });
-    inputs.forEach((input) => {
-        events.on(input, { blur: event => validateSingleInput(event) });
-    });
-
     /**
      * create set of validation rules
      * @param  {Element} field  element to validate
      * @return {Object}         object of validation rules
      */
-    function validaitonRules(field) {
+    const validaitonRules = (field) => {
         const fieldValidation = [{
             required: field.dataset.validationRequired,
             message: field.dataset.validationRequired
@@ -37,14 +32,14 @@ const validations = (container) => {
         ];
 
         return fieldValidation;
-    }
+    };
 
     /**
      * function for validation of single input, same for single input validation and whole form
      * @param  {Element} field  element to validate
      * @return {Boolean}        return true if there is error
      */
-    function validateInput(field) {
+    const validateInput = (field) => {
         const error = field.closest('.form-group').getElementsByClassName('error');
         error[0].classList.add('u-hidden');
         const fieldValidation = validaitonRules(field);
@@ -57,24 +52,24 @@ const validations = (container) => {
         }
 
         return message;
-    }
+    };
 
     /**
      * validate single input after blur
      * @param  {event} event    blur event on input
      * @return {Boolean}        always true
      */
-    function validateSingleInput(event) {
+    const validateSingleInput = (event) => {
         const currentInput = event.currentTarget;
         validateInput(currentInput);
         return true;
-    }
+    };
 
     /**
      * validate whole form and show message if form was send
-     * @param  {event} event click event on send button 
+     * @param  {event} event click event on send button // eslint-disable
      */
-    function validateForm(event) {
+    const validateForm = (event) => {
         event.preventDefault();
         let errorFree = true;
 
@@ -122,7 +117,12 @@ const validations = (container) => {
                     }
                 });
         }
-    }
+    };
+
+    events.on(button[0], { click: event => validateForm(event) });
+    inputs.forEach((input) => {
+        events.on(input, { blur: event => validateSingleInput(event) });
+    });
 };
 
 export default validations;
