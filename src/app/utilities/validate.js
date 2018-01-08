@@ -4,8 +4,16 @@ import { email, specialCharacters } from '../const/regExp';
  * @param  {array} validationRules
  * @return {null/string} Returns string in case that error was found.
  */
-const validate = (value, validationRules = []) => {
+const validate = (singleError, value, validationRules = []) => {
     let errorMessage = null;// was null
+    const returnError = (currentMessage) => {
+        if (singleError) {
+            // single parametr validation
+            errorMessage = currentMessage;
+        } else {
+            errorMessage += `${currentMessage}<br/>`;
+        }
+    };
 
     if (validationRules.length) {
         for (let i = 0; i < validationRules.length; i += 1) {
@@ -23,12 +31,10 @@ const validate = (value, validationRules = []) => {
             const specialSymbols = rule.specialSymbols;
             const equal = rule.equal;
             const regexValidation = rule.regexValidation;
+
             if (required) {
                 if (value === '' || (!value && value !== 0)) {
-                    errorMessage += `${rule.message}<br/>`;
-                    // single parametr validation
-                    // errorMessage = rule.message;
-                    // break;
+                    returnError(rule.message);
                 }
             }
 
@@ -36,62 +42,62 @@ const validate = (value, validationRules = []) => {
                 const min = interval[0];
                 const max = interval[1];
                 if (value < min || value > max) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (minValue) {
                 if (value < minValue) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (maxValue) {
                 if (value > maxValue) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (minLength) {
                 if (value.toString().length < minLength) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (maxLength) {
                 if (value.toString().length > maxLength) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (emailFormat) {
                 if (!value.match(email)) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (noSpecialSymbols) {
                 if (value.match(specialCharacters)) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (specialSymbols) {
                 if (!value.match(specialCharacters)) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (equal) {
                 if (value !== equal) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
 
             if (regexValidation) {
                 const re = new RegExp(regexValidation);
                 if (!value.match(re)) {
-                    errorMessage += `${rule.message}<br/>`;
+                    returnError(rule.message);
                 }
             }
         }

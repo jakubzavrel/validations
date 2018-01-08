@@ -7,13 +7,13 @@
     data-validation-min="0" data-validation-min-message="only 0 or possitive number"
     data-validation-regular="x|y" data-validation-regular-message="not x or y"
  -->
-<div id="validations" class="py-5">
+<div id="validations" data-validation-single="false" class="py-5">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <br>
-                <input type="text" name="name" id="name" class="js-validation" data-validation-required="required field">
+                <input type="text" name="name" id="name" class="js-validation" data-validation-required="required field" />
                 <span class="error u-hidden"></span>
             </div>
         </div>

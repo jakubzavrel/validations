@@ -6,6 +6,13 @@ const validations = (container) => {
     const inputs = arrays.fromNodes(container.getElementsByClassName('js-validation'));
     const button = container.getElementsByClassName('js-validation-master');
     const formResult = container.getElementsByClassName('js-form-result');
+    let singleError = container.dataset.validationSingle;
+
+    if (singleError === 'true') { 
+        singleError = true;
+    } else {
+        singleError = false;
+    }
 
     /**
      * create set of validation rules
@@ -48,7 +55,7 @@ const validations = (container) => {
         error[0].classList.add('u-hidden');
         const fieldValidation = validaitonRules(field);
 
-        let message = validate(field.value, fieldValidation);
+        let message = validate(singleError, field.value, fieldValidation);
         if (message) {
             message = message.replace('null', '');
             error[0].classList.remove('u-hidden');
