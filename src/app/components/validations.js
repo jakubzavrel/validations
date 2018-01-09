@@ -88,7 +88,7 @@ const validations = (container) => {
         inputsGroup.forEach((field) => {
             const curentGroup = arrays.fromNodes(field.getElementsByTagName('input'));
             let isInvalid;
-            curentGroup.forEach((input) => {    
+            curentGroup.forEach((input) => {
                 isInvalid = validateInput(input);
             });
             if (isInvalid) {
