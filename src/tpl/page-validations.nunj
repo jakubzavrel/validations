@@ -10,63 +10,63 @@
 <div id="validations" data-validation-single="false" class="py-5">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation" data-validation-required="required field">
                 <label for="name">Name:</label>
                 <br>
-                <input type="text" name="name" id="name" class="js-validation" data-validation-required="required field" />
+                <input type="text" name="name" id="name" />
                 <span class="error u-hidden"></span>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation" data-validation-no-special-symbols="no special symbol">
                 <label for="surname">Surname:</label>
                 <br>
-                <input type="text" name="surname" id="surname" class="js-validation" data-validation-no-special-symbols="no special symbol">
+                <input type="text" name="surname" id="surname">
                 <span class="error u-hidden"></span>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation" data-validation-required="required field" data-validation-email="not an email format">
                 <label for="name">Email:</label>
                 <br>
-                <input type="email" name="email" id="email" class="js-validation" data-validation-required="required field" data-validation-email="not an email format">
+                <input type="email" name="email" id="email">
                 <span class="error u-hidden"></span>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation">
                 <label for="datepicker">Birthdate:</label>
                 <br>
-                <input type="text" name="birthdate" id="datepicker" class="js-validation">
+                <input type="text" name="birthdate" id="datepicker">
                 <span class="error u-hidden"></span>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation">
                 <label for="gender">Gender:</label>
                 <br>
-                <input type="radio" name="gender" class="js-validation" value="male" checked="true">Male<br>
-                <input type="radio" name="gender" class="js-validation" value="female">Female
+                <input type="radio" name="gender" value="male" checked="true">Male<br>
+                <input type="radio" name="gender" value="female">Female
                 <span class="error u-hidden"></span>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation" data-validation-min="0" data-validation-min-message="only 0 or possitive number" >
                 <label for="kids">Kids:</label><br>
-                <input type="number" name="kids" id="kids" class="js-validation" data-validation-min="0" data-validation-min-message="only 0 or possitive number" value="0">
+                <input type="number" name="kids" id="kids" value="0">
                 <span class="error u-hidden"></span>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="form-group js-validation" data-validation-regular="x|y" data-validation-regular-message="not x or y">
                 <label for="regex">RegEx - write x or y:</label><br>
-                <input type="text" name="regex" id="regex" class="js-validation" data-validation-regular="x|y" data-validation-regular-message="not x or y">
+                <input type="text" name="regex" id="regex">
                 <span class="error u-hidden"></span>
             </div>
         </div>

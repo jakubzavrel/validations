@@ -3,7 +3,7 @@ import events from '../utilities/events';
 import validate from '../utilities/validate';
 
 const validations = (container) => {
-    const inputs = arrays.fromNodes(container.getElementsByClassName('js-validation'));
+    const inputsGroup = arrays.fromNodes(container.getElementsByClassName('js-validation'));
     const button = container.getElementsByClassName('js-validation-master');
     const formResult = container.getElementsByClassName('js-form-result');
     let singleError = container.dataset.validationSingle;
@@ -51,9 +51,10 @@ const validations = (container) => {
      * @return {Boolean}        return true if there is error
      */
     const validateInput = (field) => {
-        const error = field.closest('.form-group').getElementsByClassName('error');
+        const formGroup = field.closest('.form-group');
+        const error = formGroup.getElementsByClassName('error');
         error[0].classList.add('u-hidden');
-        const fieldValidation = validaitonRules(field);
+        const fieldValidation = validaitonRules(formGroup);
 
         let message = validate(singleError, field.value, fieldValidation);
         if (message) {
@@ -84,9 +85,12 @@ const validations = (container) => {
         event.preventDefault();
         let errorFree = true;
 
-        inputs.forEach((field) => {
-            const isInvalid = validateInput(field);
-
+        inputsGroup.forEach((field) => {
+            const curentGroup = arrays.fromNodes(field.getElementsByTagName('input'));
+            let isInvalid;
+            curentGroup.forEach((input) => {    
+                isInvalid = validateInput(input);
+            });
             if (isInvalid) {
                 errorFree = false;
             }
@@ -98,8 +102,11 @@ const validations = (container) => {
     };
 
     events.on(button[0], { click: event => validateForm(event) });
-    inputs.forEach((input) => {
-        events.on(input, { blur: event => validateSingleInput(event) });
+    inputsGroup.forEach((inputGroup) => {
+        const curentGroup = arrays.fromNodes(inputGroup.getElementsByTagName('input'));
+        curentGroup.forEach((input) => {
+            events.on(input, { blur: event => validateSingleInput(event) });
+        });
     });
 };
 
