@@ -39,6 +39,22 @@ const validations = (container) => {
         {
             regexValidation: field.dataset.validationRegular,
             message: field.dataset.validationRegularMessage
+        },
+        {
+            interval: [field.dataset.validationIntervalMin, field.dataset.validationIntervalMax],
+            message: field.dataset.validationIntervalMessage
+        },
+        {
+            minLength: field.dataset.validationMinLength,
+            message: field.dataset.validationMinLengthMessage
+        },
+        {
+            maxLength: field.dataset.validationMaxLength,
+            message: field.dataset.validationMaxLengthMessage
+        },
+        {
+            equal: field.dataset.validationEqual,
+            message: field.dataset.validationEqualMessage
         }
         ];
 

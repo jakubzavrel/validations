@@ -6,8 +6,27 @@
     data-validation-email="not an email format"
     data-validation-min="0" data-validation-min-message="only 0 or possitive number"
     data-validation-regular="x|y" data-validation-regular-message="not x or y"
+    data-validation-interval-min="0" data-validation-interval-max="10" data-validation-interval-message="between 0 and 10"
+    data-validation-min-length="2" data-validation-min-length-message="min length 2 symbols"
+    data-validation-max-length="10" data-validation-max-length-message="max length 10 symbols"
+    data-validation-equal="hello" data-validation-equal-message="you must write 'hello'"
  -->
-<div id="validations" data-validation-single="false" class="py-5">
+<div class="pt-5">
+    <h2>Frontend validations</h2>
+    <p>Frontend validations of values in inputs. Just put right data atribute to wraper div form-group. More validation rules for one field isn't a problem. You can turn on single error validation by adding data-validation-single="true" to main form container</p>
+    <ul>
+        <li>data-validation-required="required field"</li>
+        <li>data-validation-no-special-symbols="no special symbol"</li>
+        <li>data-validation-email="not an email format"</li>
+        <li>data-validation-min="0" data-validation-min-message="only 0 or possitive number"</li>
+        <li>data-validation-regular="x|y" data-validation-regular-message="not x or y"</li>
+        <li>data-validation-interval-min="0" data-validation-interval-max="10" data-validation-interval-message="between 0 and 10"</li>
+        <li>data-validation-min-length="2" data-validation-min-length-message="min length 2 symbols"</li>
+        <li>data-validation-max-length="10" data-validation-max-length-message="max length 10 symbols"</li>
+        <li>data-validation-equal="hello" data-validation-equal-message="you must write 'hello'"</li>
+    </ul>
+</div>
+<div id="validations" data-validation-single="false" class="py-3">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group js-validation" data-validation-required="required field">
@@ -58,7 +77,7 @@
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
             <div class="form-group js-validation" data-validation-min="0" data-validation-min-message="only 0 or possitive number" >
-                <label for="kids">Kids:</label><br>
+                <label for="kids">Positive number:</label><br>
                 <input type="number" name="kids" id="kids" value="0">
                 <span class="error u-hidden"></span>
             </div>
@@ -67,6 +86,31 @@
             <div class="form-group js-validation" data-validation-regular="x|y" data-validation-regular-message="not x or y">
                 <label for="regex">RegEx - write x or y:</label><br>
                 <input type="text" name="regex" id="regex">
+                <span class="error u-hidden"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-group js-validation" data-validation-interval-min="0" data-validation-interval-max="10" data-validation-interval-message="between 0 and 10">
+                <label for="kids">Range 0 - 10:</label><br>
+                <input type="number" name="kids" id="kids">
+                <span class="error u-hidden"></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-group js-validation" data-validation-min-length="2" data-validation-min-length-message="min length 2 symbols" data-validation-max-length="10" data-validation-max-length-message="max length 10 symbols">
+                <label for="kids">Text 2 - 10 symbols:</label><br>
+                <input type="text" name="kids" id="kids">
+                <span class="error u-hidden"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-group js-validation" data-validation-equal="hello" data-validation-equal-message="you must write 'hello'">
+                <label for="kids">Write exactly 'hello':</label><br>
+                <input type="text" name="sdgasdg" id="sdgdfg">
                 <span class="error u-hidden"></span>
             </div>
         </div>
