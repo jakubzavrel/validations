@@ -1,0 +1,11 @@
+{% extends './layouts/default.nunj' %} 
+{% block content %}
+
+<div class="row iframe-test">
+    <div class="col-12 col-md-6">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo debitis a aperiam repellat dolorem veniam reprehenderit placeat tempora. Quos, omnis placeat illo eligendi itaque iure praesentium minima, aperiam assumenda quisquam.
+    </div>
+    <div class="col-12 col-md-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi aliquid ipsam minus recusandae a voluptatem accusantium animi eaque error, doloremque, ullam eius culpa quos nisi est, exercitationem aut, repellat iure.</div>
+    <iframe src="http://localhost:5001/page-validations.html" width="100%" height="10000px" frameborder="0"></iframe>
+</div>
+
+{% endblock %}

@@ -1,16 +1,5 @@
 {% extends './layouts/default.nunj' %} 
 {% block content %}
-<!-- 
-    data-validation-required="required field"
-    data-validation-no-special-symbols="no special symbol"
-    data-validation-email="not an email format"
-    data-validation-min="0" data-validation-min-message="only 0 or possitive number"
-    data-validation-regular="x|y" data-validation-regular-message="not x or y"
-    data-validation-interval-min="0" data-validation-interval-max="10" data-validation-interval-message="between 0 and 10"
-    data-validation-min-length="2" data-validation-min-length-message="min length 2 symbols"
-    data-validation-max-length="10" data-validation-max-length-message="max length 10 symbols"
-    data-validation-equal="hello" data-validation-equal-message="you must write 'hello'"
- -->
 <div class="pt-5">
     <h2>Frontend validations</h2>
     <p>Frontend validations of values in inputs. Just put right data atribute to wraper div form-group. More validation rules for one field isn't a problem. You can turn on single error validation by adding data-validation-single="true" to main form container</p>
