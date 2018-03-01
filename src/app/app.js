@@ -19,9 +19,7 @@ import PlusOne from './components/plus-one/PlusOne';
 const app = (config) => {
     init(cookieLaw, document.getElementById('cookie-law'));
     init(mainMenu, document.querySelector('.header'));
-    init(validations, document.getElementById('validations'));
-    init(datepicker, document.getElementById('validations'));
-    init(suffix, document.querySelector('.js-suffix'));
+    init(validations, document.querySelector('.js-validations'));
     init(suffix, document.querySelector('.js-suffix'));
 
     const store = configureStore(config);

@@ -4,14 +4,21 @@ import validate from '../utilities/validate';
 
 const validations = (container) => {
     const inputsGroup = arrays.fromNodes(container.getElementsByClassName('js-validation'));
-    const button = container.getElementsByClassName('js-validation-master');
+    const submitButton = container.getElementsByClassName('js-validation-master');
     const formResult = container.getElementsByClassName('js-form-result');
     let singleError = container.dataset.validationSingle;
+    let onBlurError = container.dataset.validationOnBlur;
 
     if (singleError === 'true') {
         singleError = true;
     } else {
         singleError = false;
+    }
+
+    if (onBlurError === 'true') {
+        onBlurError = true;
+    } else {
+        onBlurError = false;
     }
 
     /**
@@ -112,17 +119,22 @@ const validations = (container) => {
             }
         });
 
+        submitButton[0].setAttribute('disabled', 'true');
         if (errorFree) {
+            submitButton[0].removeAttribute('disabled');
             formResult[0].innerHTML = 'Form send!';
         }
     };
 
-    events.on(button[0], { click: event => validateForm(event) });
+    events.on(submitButton[0], { click: event => validateForm(event) });
     inputsGroup.forEach((inputGroup) => {
         const curentGroup = arrays.fromNodes(inputGroup.getElementsByTagName('input'));
-        curentGroup.forEach((input) => {
-            events.on(input, { blur: event => validateSingleInput(event) });
-        });
+
+        if (onBlurError) {
+            curentGroup.forEach((input) => {
+                events.on(input, { blur: event => validateSingleInput(event) });
+            });
+        }
     });
 };
 
